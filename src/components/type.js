@@ -1,0 +1,5 @@
+export const addNote = 'addnote'
+export const editNote = 'editNote'
+export const deleteNote = 'deleteNote'
+export const updateNote = 'updateNote'
+export const getActiveNote = 'getActiveNote'
