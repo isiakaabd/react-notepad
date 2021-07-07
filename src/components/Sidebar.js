@@ -13,31 +13,26 @@ function Sidebar() {
   // saving the document
   useEffect(() => {
     localStorage.setItem('reactNotes', JSON.stringify(noteState))
-  }, [listOfNotes])
+  }, [noteState])
 
   return (
-    <div className="sidebar-container">
+    <div className="col-4 col-md-5 p-1 sidebar-container">
       <div className="sidebar-header">
-        <div className="note">
-          <h4>note</h4>
-        </div>
-        <div className="header-button">
-          <button
-            type="button"
-            onClick={() =>
-              noteDispatch({
-                type: addNote,
-                payload: {
-                  id: uuid(),
-                  title: 'unTitiled document',
-                  body: 'Abb' + Math.floor(Math.random() * 8),
-                  dateModified: Date.now(),
-                },
-              })
-            }
-          >
-            add
-          </button>
+        <div
+          className="header-button"
+          onClick={() =>
+            noteDispatch({
+              type: addNote,
+              payload: {
+                id: uuid(),
+                title: 'Untitled Note',
+                body: '',
+                dateModified: Date.now(),
+              },
+            })
+          }
+        >
+          <i className="fas fa-plus fa-2x" />
         </div>
       </div>
       <div className="sidebar-body">

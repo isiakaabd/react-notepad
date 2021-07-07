@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { noteContext } from '../App'
 import '../App.css'
 import { updateNote } from './type'
+import ReactMarkdown from 'react-markdown'
 
 function Main() {
   const noteContexts = useContext(noteContext)
@@ -21,21 +22,33 @@ function Main() {
   if (!noteState.listOfNotes.length)
     return <div className="no-active-note">No Active Note</div>
   return (
-    <div className="Main-menu">
+    <div className=" Main-menu m-auto d-flex flex-column">
       <div className="inputarea">
         <input
+          autoCorrect="true"
+          autoFocus
           type="text"
           name="title"
           value={title}
+          placeholder="Note Title"
           onChange={(e) => onEditField('title', e.target.value)}
         />
         <textarea
           value={body}
+          autoComplete="true"
+          autoCapitalize="true"
           name="textarea"
+          placeholder="Write your note here..."
           onChange={(e) => onEditField('body', e.target.value)}
         />
       </div>
-      <div className="preview"></div>
+      <hr style={{ marginTop: '20px' }} />
+      <div className="preview">
+        <h2>{title}</h2>
+        <div className="preview-body">
+          <ReactMarkdown>{body}</ReactMarkdown>
+        </div>
+      </div>
     </div>
   )
 }

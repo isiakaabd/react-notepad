@@ -1,7 +1,9 @@
 import React, { useReducer } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import Sidebar from './components/Sidebar'
 import Main from './components/Main'
+import Title from './components/Title'
 import {
   addNote,
   editNote,
@@ -37,9 +39,10 @@ function reducer(state, action) {
     case deleteNote:
       return {
         ...state,
-        listOfNotes: state.listOfNotes.filter((note) => {
-          return note.id !== action.payload
+        listOfNotes: state.listOfNotes.filter(({ id }) => {
+          return id !== action.payload
         }),
+        activeNote: false,
       }
 
     case updateNote:
@@ -67,9 +70,11 @@ function App() {
 
   return (
     <Provider value={{ noteState: state, noteDispatch: dispatch }}>
-      <div className="App">
-        <Sidebar />
-        <Main />
+      <Title />
+      <div className="d-flex container-fluid App p-0">
+        <Sidebar className="col-3 col-md-2 " />
+        <Main className="col-9 col-md-6" />
+        {/* <hr /> */}
       </div>
     </Provider>
   )
