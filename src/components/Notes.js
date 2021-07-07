@@ -16,7 +16,6 @@ function Notes(props) {
 
   return (
     <div
-      className="note-items"
       onClick={handleEdit}
       className={`note-items  ${id === noteState.activeNote.id && 'active'}`}
     >
