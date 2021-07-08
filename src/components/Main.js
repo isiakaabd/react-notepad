@@ -8,7 +8,8 @@ function Main() {
   const noteContexts = useContext(noteContext)
   const { noteState, noteDispatch } = noteContexts
   const { title, body } = noteState.activeNote
-  function onEditField(field, value) {
+
+  const onEditField = (field, value) => {
     noteDispatch({
       type: updateNote,
       payload: {

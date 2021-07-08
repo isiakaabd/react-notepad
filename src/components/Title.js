@@ -10,7 +10,7 @@ function Title() {
   )
 }
 
-export default Title
+export default React.memo(Title)
 
 const Style = {
   fontSize: '40px',

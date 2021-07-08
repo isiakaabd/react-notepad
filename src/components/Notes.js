@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { deleteNote, editNote } from './type'
 import { noteContext } from '../App'
+//import AddOutlinedIcon from '@material-ui/icons/AddOutlined'
 
 function Notes(props) {
   const noteContexts = useContext(noteContext)
   const { noteDispatch, noteState } = noteContexts
   const { id, title, body, dateModified } = props.notes
-
   const handleEdit = () => {
     noteDispatch({
       type: editNote,
@@ -19,10 +19,11 @@ function Notes(props) {
       onClick={handleEdit}
       className={`note-items  ${id === noteState.activeNote.id && 'active'}`}
     >
+      {/* <AddOutlinedIcon /> */}
       <div className="left-items-content">
         <h6>{title}</h6>
         <hr />
-        <p>{body && body.substring(0, 10)} </p>
+        <p>{body && body.substring(0, 20)} </p>
         <small>
           {new Date(dateModified).toLocaleDateString('en-GB', {
             hour: '2-digit',
@@ -32,6 +33,7 @@ function Notes(props) {
       </div>
       <div className="right-items-content">
         <i
+          type="button"
           className="fas fa-times"
           onClick={() =>
             noteDispatch({
@@ -39,7 +41,7 @@ function Notes(props) {
               payload: id,
             })
           }
-        />
+        ></i>
       </div>
     </div>
   )

@@ -5,12 +5,12 @@ import Notes from './Notes'
 import { addNote } from './type'
 import uuid from 'react-uuid'
 import { useEffect } from 'react'
+
 function Sidebar() {
   const noteContexts = useContext(noteContext)
   const { noteState, noteDispatch } = noteContexts
   const { listOfNotes } = noteState
 
-  // saving the document
   useEffect(() => {
     localStorage.setItem('reactNotes', JSON.stringify(noteState))
   }, [noteState])
