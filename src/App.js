@@ -40,9 +40,10 @@ const reducer = (state, action) => {
     case updateNote:
       return {
         ...state,
+        activeNote: action.payload,
         listOfNotes: state.listOfNotes.map((note) => {
           if (note.id === action.payload.id) {
-            return (state.activeNote = action.payload)
+            return action.payload
           }
           return note
         }),
