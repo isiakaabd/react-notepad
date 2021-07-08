@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { deleteNote, editNote } from './type'
 import { noteContext } from '../App'
-//import AddOutlinedIcon from '@material-ui/icons/AddOutlined'
 
 function Notes(props) {
   const noteContexts = useContext(noteContext)
   const { noteDispatch, noteState } = noteContexts
   const { id, title, body, dateModified } = props.notes
+
   const handleEdit = () => {
     noteDispatch({
       type: editNote,
@@ -19,7 +19,6 @@ function Notes(props) {
       onClick={handleEdit}
       className={`note-items  ${id === noteState.activeNote.id && 'active'}`}
     >
-      {/* <AddOutlinedIcon /> */}
       <div className="left-items-content">
         <h6>{title}</h6>
         <hr />

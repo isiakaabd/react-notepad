@@ -4,34 +4,29 @@ import '../App.css'
 import Notes from './Notes'
 import { addNote } from './type'
 import uuid from 'react-uuid'
-import { useEffect } from 'react'
 
 function Sidebar() {
   const noteContexts = useContext(noteContext)
   const { noteState, noteDispatch } = noteContexts
   const { listOfNotes } = noteState
 
-  useEffect(() => {
-    localStorage.setItem('reactNotes', JSON.stringify(noteState))
-  }, [noteState])
-
   return (
     <div className="col-4 col-md-5 p-1 sidebar-container">
-      <div className="sidebar-header">
-        <div
-          className="header-button"
-          onClick={() =>
-            noteDispatch({
-              type: addNote,
-              payload: {
-                id: uuid(),
-                title: 'Untitled Note',
-                body: '',
-                dateModified: Date.now(),
-              },
-            })
-          }
-        >
+      <div
+        className="sidebar-header"
+        onClick={() =>
+          noteDispatch({
+            type: addNote,
+            payload: {
+              id: uuid(),
+              title: 'Untitled Note',
+              body: '',
+              dateModified: Date.now(),
+            },
+          })
+        }
+      >
+        <div>
           <i className="fas fa-plus fa-2x" />
         </div>
       </div>

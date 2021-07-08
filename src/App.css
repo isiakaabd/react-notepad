@@ -34,9 +34,6 @@ body {
 }
 .sidebar-header:hover {
   cursor: pointer;
-  background-color: white;
-  color: black !important;
-  transform: translateY(3px);
 }
 .sidebar-header {
   display: flex;

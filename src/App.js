@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import Sidebar from './components/Sidebar'
@@ -15,15 +15,7 @@ import {
 export const noteContext = React.createContext()
 const { Provider } = noteContext
 
-// getting notes from local storage
-const initialstate = localStorage.reactNotes
-  ? JSON.parse(localStorage.reactNotes)
-  : {
-      listOfNotes: [],
-      activeNote: false,
-    }
-
-function reducer(state, action) {
+const reducer = (state, action) => {
   switch (action.type) {
     case addNote:
       return {
@@ -66,7 +58,21 @@ function reducer(state, action) {
   }
 }
 function App() {
+  // getting notes from local storage
+  const initialstate = localStorage.reactNotes
+    ? JSON.parse(localStorage.reactNotes)
+    : {
+        listOfNotes: [],
+        activeNote: false,
+      }
+
   const [state, dispatch] = useReducer(reducer, initialstate)
+
+  // saving to local storage
+
+  useEffect(() => {
+    localStorage.setItem('reactNotes', JSON.stringify(state))
+  }, [state])
 
   return (
     <Provider value={{ noteState: state, noteDispatch: dispatch }}>
@@ -74,7 +80,6 @@ function App() {
       <div className="d-flex container-fluid App p-0">
         <Sidebar className="col-3 col-md-2 " />
         <Main className="col-9 col-md-6" />
-        {/* <hr /> */}
       </div>
     </Provider>
   )
