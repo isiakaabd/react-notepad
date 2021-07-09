@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { noteContext } from '../App'
 import '../App.css'
-import { updateNote } from './type'
+import { getActiveNote, updateNote } from './type'
 import ReactMarkdown from 'react-markdown'
 
 function Main() {
@@ -27,6 +27,18 @@ function Main() {
       <div className="inputarea">
         <section>
           <input
+            onKeyDown={() =>
+              noteDispatch({
+                type: getActiveNote,
+                payload: true,
+              })
+            }
+            onKeyUp={() =>
+              noteDispatch({
+                type: getActiveNote,
+                payload: false,
+              })
+            }
             autoCorrect="true"
             autoFocus
             type="text"
@@ -38,6 +50,18 @@ function Main() {
         </section>
         <section>
           <textarea
+            onKeyDown={() =>
+              noteDispatch({
+                type: getActiveNote,
+                payload: true,
+              })
+            }
+            onKeyUp={() =>
+              noteDispatch({
+                type: getActiveNote,
+                payload: false,
+              })
+            }
             rows="10"
             value={body}
             autoComplete="true"
