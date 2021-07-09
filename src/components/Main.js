@@ -33,6 +33,16 @@ function Main() {
                 payload: true,
               })
             }
+            onTouchStart={noteDispatch({
+              type: getActiveNote,
+              payload: true,
+            })}
+            onTouchEnd={() =>
+              noteDispatch({
+                type: getActiveNote,
+                payload: false,
+              })
+            }
             onKeyUp={() =>
               noteDispatch({
                 type: getActiveNote,
@@ -56,12 +66,22 @@ function Main() {
                 payload: true,
               })
             }
+            onTouchEnd={() =>
+              noteDispatch({
+                type: getActiveNote,
+                payload: false,
+              })
+            }
             onKeyUp={() =>
               noteDispatch({
                 type: getActiveNote,
                 payload: false,
               })
             }
+            onTouchStart={noteDispatch({
+              type: getActiveNote,
+              payload: true,
+            })}
             rows="10"
             value={body}
             autoComplete="true"
