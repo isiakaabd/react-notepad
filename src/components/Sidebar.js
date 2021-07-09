@@ -27,7 +27,7 @@ function Sidebar() {
         }
       >
         <div>
-          <i className="fas fa-plus fa-2x" />
+          <h6>Add New Note</h6>
         </div>
       </div>
       <div className="sidebar-body">

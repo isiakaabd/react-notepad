@@ -20,6 +20,7 @@ body {
 
 .sidebar-container {
   width: 40%;
+  max-height: 50vh !important;
 }
 
 .sidebar-header {
@@ -29,8 +30,10 @@ body {
   border: none;
   border-radius: 5px;
 }
-.header-button i {
-  align-self: center;
+.sidebar-header h6 {
+  font-weight: 300;
+  margin-bottom: 0;
+  padding: 0.4rem 0;
 }
 .sidebar-header:hover {
   cursor: pointer;
@@ -61,8 +64,13 @@ body {
   width: 100%;
   align-self: flex-start;
 }
-.left-items-content h6 {
+.left-items-content h6,
+.left-items-content p {
   text-align: left;
+  overflow-wrap: break-word;
+}
+.left-items-content p {
+  margin-bottom: 3px;
 }
 
 hr {
@@ -89,26 +97,23 @@ hr {
 }
 
 .inputarea {
-  height: 50vh;
-  width: 90%;
-
-  margin: auto;
-  margin-bottom: 30px;
+  width: 95%;
+  margin: 0 auto;
 }
-
-.inputarea input,
+.inputarea section > input,
 textarea {
   display: block;
   border: 1px solid #ddd;
   margin-bottom: 20px;
   width: 100%;
-  height: calc(50vh - 130px);
-  padding: 10px;
+  border-radius: 8px;
+  padding: 6px;
   font-size: inherit;
   font-family: inherit;
 }
+
 .inputarea input {
-  height: 50px;
+  height: 40px;
   font-size: 1rem;
 }
 .inputarea input:focus,
@@ -117,14 +122,17 @@ textarea {
   background-color: black;
   color: white;
 }
+
 /* preview */
 .preview {
   height: 50vh;
+  width: 100%;
 }
 .preview h2 {
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 .preview .preview-body {
   width: 200px;

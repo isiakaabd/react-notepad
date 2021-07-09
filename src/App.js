@@ -22,11 +22,12 @@ const reducer = (state, action) => {
         ...state,
 
         activeNote: action.payload,
+        typingEffect: false,
         listOfNotes: [action.payload, ...state.listOfNotes],
       }
 
     case editNote:
-      return { ...state, activeNote: action.payload }
+      return { ...state, typingEffect: false, activeNote: action.payload }
 
     case deleteNote:
       return {
@@ -40,6 +41,7 @@ const reducer = (state, action) => {
     case updateNote:
       return {
         ...state,
+        typingEffect: true,
         activeNote: action.payload,
         listOfNotes: state.listOfNotes.map((note) => {
           if (note.id === action.payload.id) {
@@ -65,6 +67,7 @@ function App() {
     : {
         listOfNotes: [],
         activeNote: false,
+        typingEffect: false,
       }
 
   const [state, dispatch] = useReducer(reducer, initialstate)

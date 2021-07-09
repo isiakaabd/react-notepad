@@ -23,25 +23,30 @@ function Main() {
   if (!noteState.listOfNotes.length)
     return <div className="no-active-note">No Active Note</div>
   return (
-    <div className=" Main-menu m-auto d-flex flex-column">
+    <div className=" Main-menu d-flex flex-column">
       <div className="inputarea">
-        <input
-          autoCorrect="true"
-          autoFocus
-          type="text"
-          name="title"
-          value={title}
-          placeholder="Note Title"
-          onChange={(e) => onEditField('title', e.target.value)}
-        />
-        <textarea
-          value={body}
-          autoComplete="true"
-          autoCapitalize="true"
-          name="textarea"
-          placeholder="Write your note here..."
-          onChange={(e) => onEditField('body', e.target.value)}
-        />
+        <section>
+          <input
+            autoCorrect="true"
+            autoFocus
+            type="text"
+            name="title"
+            value={title}
+            placeholder="Note Title"
+            onChange={(e) => onEditField('title', e.target.value)}
+          />
+        </section>
+        <section>
+          <textarea
+            rows="10"
+            value={body}
+            autoComplete="true"
+            autoCapitalize="true"
+            name="textarea"
+            placeholder="Write your note here..."
+            onChange={(e) => onEditField('body', e.target.value)}
+          />
+        </section>
       </div>
       <hr style={{ marginTop: '20px' }} />
       <div className="preview">

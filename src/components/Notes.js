@@ -22,7 +22,7 @@ function Notes(props) {
       <div className="left-items-content">
         <h6>{title}</h6>
         <hr />
-        <p>{body && body.substring(0, 20)} </p>
+        <p>{body && body.substring(0, 20) + '..'} </p>
         <small>
           {new Date(dateModified).toLocaleDateString('en-GB', {
             hour: '2-digit',
